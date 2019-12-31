@@ -1,0 +1,5 @@
+*
+!.gitignore
+!dockerfiles
+!dockerfiles/*
+!docker-compose.yml
