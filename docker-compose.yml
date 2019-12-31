@@ -20,6 +20,7 @@ services:
     image: mysql:5.7
     volumes:
       - ./mysql:/var/lib/mysql
+    container_name: mysql_xserver
     ports:
       - 13306:3306
     environment:
@@ -36,6 +37,7 @@ services:
       - PMA_PASSWORD=${MYSQL_PASSWORD}
     links:
       - mysql
+    container_name: phpmyadmin_xserver
     ports:
       - 4000:80
     volumes:
