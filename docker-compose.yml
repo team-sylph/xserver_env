@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  centos_php:
+    build:
+      context: ./
+      dockerfile: ./dockerfiles/dockerfile
+    volumes:
+      - ${DOCUMENT_ROOTDIR}:/home/${USER_NAME}/${DOMAIN_NAME}
+    container_name: xserver
+    ports:
+      - 28000:80
+    links:
+      - mysql:mysql
+    tty: true
+    stdin_open: true
+    privileged: true
+    command: /sbin/init
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - 13306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+      - PMA_USER=${MYSQL_USER}
+      - PMA_PASSWORD=${MYSQL_PASSWORD}
+    links:
+      - mysql
+    ports:
+      - 4000:80
+    volumes:
+      - ./phpmyadmin/sessions:/sessions

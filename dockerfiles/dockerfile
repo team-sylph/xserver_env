@@ -1,0 +1,8 @@
+FROM centos:7.7.1908
+RUN yum update -y
+RUN yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+RUN yum -y install --enablerepo=remi,remi-php72 php php-mbstring php-xml php-xmlrpc php-gd php-pdo php-pecl-mcrypt php-mysqlnd php-pecl-mysql
+RUN rm -rf /etc/php.ini
+RUN ln -s /home/${USER_NAME}/${DOMAIN_NAME}/xserver_php/php.ini /etc/php.ini
+# RUN systemctl restart httpd
+WORKDIR /home/${USER_NAME}/
