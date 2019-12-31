@@ -1,6 +1,7 @@
 *
 !.gitignore
 !README.md
+!.envexample
 !dockerfiles
 !dockerfiles/*
 !docker-compose.yml

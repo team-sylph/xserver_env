@@ -1,0 +1,5 @@
+DOCUMENT_ROOTDIR=./here
+USER_NAME=testusername
+DOMAIN_NAME=test.com
+MYSQL_USER=yourmysqlusername
+MYSQL_PASSWORD=yourpassword

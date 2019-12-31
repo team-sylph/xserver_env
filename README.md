@@ -1,3 +1,6 @@
+make .env file in rood directory and set DOCUMENT_ROOTDIR, USER_NAME, DOMAIN_NAME, 
+MYSQL_USER, MYSQL_PASSWORD like .envexample file.
+
 1. `docker-compose up -d`
 2. `docker exec -it xserver bash`
 
